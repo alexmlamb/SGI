@@ -65,6 +65,9 @@ elif [[ $(hostname) == *"gra"* ]]; then # cc
   export WANDB_MODE=dryrun
 fi
 
+wandb off
+export WANDB_MODE=dryrun
+
 mkdir -p ${USER_DATA_DIR}
 
 echo 'Starting experiment'

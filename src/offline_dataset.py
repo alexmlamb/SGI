@@ -190,6 +190,9 @@ def get_offline_dataloaders(
     is_weights = torch.ones(observation.shape[1]).to(reward)
     return sanitize_batch(OfflineSamples(observation, action, reward, return_, done[:-n_step_return], done_n, None, is_weights))
 
+  #print('checkpoints', checkpoints)
+  checkpoints = ["501", "401"]
+
   dataset = MultiDQNReplayDataset(data_path, tmp_data_path, games, checkpoints, frames, k_step, samples, full_action_set, dataset_on_gpu, dataset_on_disk)
 
   if shuffle_checkpoints:

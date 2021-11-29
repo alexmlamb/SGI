@@ -74,6 +74,8 @@ def main(args: DictConfig):
         else:
             save_fn = None
 
+        print('config', config)
+
         config["algo"]["min_steps_learn"] = 0
         agent, _, _, _ = train(config, save_fn=save_fn,
                                offline=True,
