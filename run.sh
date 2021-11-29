@@ -14,7 +14,7 @@ python3 scripts/run.py public=True model_folder=./ offline.runner.save_every=250
     +offline.agent.model_kwargs.noisy_nets_std=0 \
     offline.runner.dataloader.dataset_on_disk=True \
     offline.runner.dataloader.samples=1000000 \
-    offline.runner.dataloader.checkpoints=[401,501] \
+    offline.runner.dataloader.checkpoints=[1,201,301,401,501] \
     offline.runner.dataloader.num_workers=2 \
     offline.runner.dataloader.data_path=/home/lambalex/sgd_genik_obj/SGI/my_data/ \
     offline.runner.dataloader.tmp_data_path=./ 

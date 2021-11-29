@@ -461,10 +461,14 @@ class SPRCatDqnModel(torch.nn.Module):
                 bc_preds = None
 
             if self.use_inverse_model:
+                print('latents shape', proj_latents[:, :-1].shape, target_proj.view(*proj_latents.shape)[:, 1:].shape)
                 stack = torch.cat([proj_latents[:, :-1], target_proj.view(*proj_latents.shape)[:, 1:]], -1)
                 pred_actions = self.inverse_model(stack.flatten(0, 1))
                 pred_actions = pred_actions.view(stack.shape[0], stack.shape[1], *pred_actions.shape[1:])
                 pred_actions = pred_actions.transpose(0, 1)
+
+                print('pred action shape', pred_actions.shape)
+
                 inv_model_loss = F.cross_entropy(pred_actions.flatten(0, 1),
                                                  prev_action[1:self.jumps + 1].flatten(0, 1), reduction="none")
                 inv_model_loss = inv_model_loss.view(*pred_actions.shape[:-1]).mean(0)
